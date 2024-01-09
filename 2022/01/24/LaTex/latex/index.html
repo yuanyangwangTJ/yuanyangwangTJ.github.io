@@ -1,35 +1,258 @@
-<!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>LaTex 模板 - DutchMan&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="DutchMan"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="DutchMan"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="$\LaTeX$ 模板因为$\LaTeX$在完成论文等工作时排版比较容易，但是入门难度比较高，在入门$\LaTeX$约一年后，我准备整理一下所获取的$\LaTeX$信息，构建属于自己的模板。"><meta property="og:type" content="blog"><meta property="og:title" content="LaTex 模板"><meta property="og:url" content="https://yuanyangwangtj.github.io/2022/01/24/LaTex/latex/"><meta property="og:site_name" content="DutchMan&#039;s Blog"><meta property="og:description" content="$\LaTeX$ 模板因为$\LaTeX$在完成论文等工作时排版比较容易，但是入门难度比较高，在入门$\LaTeX$约一年后，我准备整理一下所获取的$\LaTeX$信息，构建属于自己的模板。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/LaTeX_logo.svg/1200px-LaTeX_logo.svg.png"><meta property="article:published_time" content="2022-01-24T03:53:31.000Z"><meta property="article:modified_time" content="2022-01-24T05:01:51.240Z"><meta property="article:author" content="Flying DutchMan"><meta property="article:tag" content="LaTeX"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/LaTeX_logo.svg/1200px-LaTeX_logo.svg.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://yuanyangwangtj.github.io/2022/01/24/LaTex/latex/"},"headline":"LaTex 模板","image":["https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/LaTeX_logo.svg/1200px-LaTeX_logo.svg.png"],"datePublished":"2022-01-24T03:53:31.000Z","dateModified":"2022-01-24T05:01:51.240Z","author":{"@type":"Person","name":"Flying DutchMan"},"publisher":{"@type":"Organization","name":"DutchMan's Blog","logo":{"@type":"ImageObject","url":"https://yuanyangwangtj.github.io/img/logo.svg"}},"description":"$\\LaTeX$ 模板因为$\\LaTeX$在完成论文等工作时排版比较容易，但是入门难度比较高，在入门$\\LaTeX$约一年后，我准备整理一下所获取的$\\LaTeX$信息，构建属于自己的模板。"}</script><link rel="canonical" href="https://yuanyangwangtj.github.io/2022/01/24/LaTex/latex/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
-  (function () {
-      function switchTab() {
-          if (!location.hash) {
-            return;
-          }
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/blog.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/blog.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-          const id = '#' + CSS.escape(location.hash.substring(1));
-          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
-          if (!$tabMenu) {
-            return;
-          }
+<link rel="stylesheet" href="/css/main.css">
 
-          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
-          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
-          Array.from($tabMenuContainer.querySelectorAll('a'))
-              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
-              .forEach($content => $content.classList.add('is-hidden'));
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=微软雅黑:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CNoto+Serif+SC:300,300italic,400,400italic,700,700italic%7C黑体:300,300italic,400,400italic,700,700italic%7CHack:300,300italic,400,400italic,700,700italic%7CMonaco:300,300italic,400,400italic,700,700italic%7CConsolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-          if ($tabMenu) {
-              $tabMenu.parentElement.classList.add('is-active');
-          }
-          const $activeTab = document.querySelector(id);
-          if ($activeTab) {
-              $activeTab.classList.remove('is-hidden');
-          }
-      }
-      switchTab();
-      window.addEventListener('hashchange', switchTab, false);
-  })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="DutchMan&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/LaTeX_logo.svg/1200px-LaTeX_logo.svg.png" alt="LaTex 模板"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-01-24T03:53:31.000Z" title="2022/1/24 11:53:31">2022-01-24</time>发表</span><span class="level-item"><time dateTime="2022-01-24T05:01:51.240Z" title="2022/1/24 13:01:51">2022-01-24</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/LaTeX/">LaTeX</a></span><span class="level-item">4 分钟读完 (大约553个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">LaTex 模板</h1><div class="content"><h1 id="LaTeX-模板"><a href="#LaTeX-模板" class="headerlink" title="$\LaTeX$ 模板"></a>$\LaTeX$ 模板</h1><p>因为$\LaTeX$在完成论文等工作时排版比较容易，但是入门难度比较高，在入门$\LaTeX$约一年后，我准备整理一下所获取的$\LaTeX$信息，构建属于自己的模板。</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yuanyangwangtj.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="$\LaTeX$ 模板因为$\LaTeX$在完成论文等工作时排版比较容易，但是入门难度比较高，在入门$\LaTeX$约一年后，我准备整理一下所获取的$\LaTeX$信息，构建属于自己的模板。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LaTex 模板">
+<meta property="og:url" content="https://yuanyangwangtj.github.io/2022/01/24/LaTex/latex/index.html">
+<meta property="og:site_name" content="DutchMan&#39;s Blog">
+<meta property="og:description" content="$\LaTeX$ 模板因为$\LaTeX$在完成论文等工作时排版比较容易，但是入门难度比较高，在入门$\LaTeX$约一年后，我准备整理一下所获取的$\LaTeX$信息，构建属于自己的模板。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-24T03:53:31.000Z">
+<meta property="article:modified_time" content="2022-01-24T05:01:51.240Z">
+<meta property="article:author" content="DutchMan">
+<meta property="article:tag" content="LaTeX">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://yuanyangwangtj.github.io/2022/01/24/LaTex/latex/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yuanyangwangtj.github.io/2022/01/24/LaTex/latex/","path":"2022/01/24/LaTex/latex/","title":"LaTex 模板"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LaTex 模板 | DutchMan's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">DutchMan's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LaTeX-%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">$\LaTeX$ 模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">模板文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#main"><span class="nav-number">2.1.</span> <span class="nav-text">main</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#color"><span class="nav-number">2.2.</span> <span class="nav-text">color</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#style"><span class="nav-number">2.3.</span> <span class="nav-text">style</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#part"><span class="nav-number">2.4.</span> <span class="nav-text">part</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">DutchMan</p>
+  <div class="site-description" itemprop="description">总是关山旧别情！</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yuanyangwangTJ" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yuanyangwangTJ" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yuanyangwangtj.github.io/2022/01/24/LaTex/latex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="DutchMan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DutchMan's Blog">
+      <meta itemprop="description" content="总是关山旧别情！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="LaTex 模板 | DutchMan's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LaTex 模板
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-01-24 11:53:31 / 修改时间：13:01:51" itemprop="dateCreated datePublished" datetime="2022-01-24T11:53:31+08:00">2022-01-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/LaTeX/" itemprop="url" rel="index"><span itemprop="name">LaTeX</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="LaTeX-模板"><a href="#LaTeX-模板" class="headerlink" title="$\LaTeX$ 模板"></a>$\LaTeX$ 模板</h1><p>因为$\LaTeX$在完成论文等工作时排版比较容易，但是入门难度比较高，在入门$\LaTeX$约一年后，我准备整理一下所获取的$\LaTeX$信息，构建属于自己的模板。</p>
 <p>模板采用分文件的方式，使作者更专注于自己的书写内容，为更好的支持中文，使用<code>xelatex</code>编译，目前已经测试通过，除却$\LaTeX$的基础功能之外，本模板包括的功能如下：</p>
 <ul>
 <li>添加<code>pdf</code>作为封面</li>
@@ -38,33 +261,99 @@
 </ul>
 <h1 id="模板文件"><a href="#模板文件" class="headerlink" title="模板文件"></a>模板文件</h1><p>模板文件如下所示，可以下载使用：</p>
 <h2 id="main"><a href="#main" class="headerlink" title="main"></a>main</h2><p><code>main.tex</code>是主文件，如下：</p>
-<figure class="highlight latex"><table><tr><td class="code"><pre><code class="hljs LaTex"><span class="hljs-meta">% !TEX program = xelatex</span><br><span class="hljs-keyword">\documentclass</span>[UTF8, a4paper, 12pt]&#123;ctexart&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;fancyhdr&#125;<br><span class="hljs-keyword">\ctexset</span>&#123;section = &#123;format=&#123;<span class="hljs-keyword">\Large</span><span class="hljs-keyword">\bfseries</span>&#125;&#125;&#125;<br><br><span class="hljs-keyword">\usepackage</span>[left=1in, right=1in, top=1in, bottom=1in]&#123;geometry&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;listings&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;graphicx&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;subcaption&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;subfiles&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;fontspec&#125;<br><span class="hljs-keyword">\usepackage</span>[hidelinks]&#123;hyperref&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;cite&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;url&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;enumitem&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;ulem&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;pdfpages&#125;<br><br><span class="hljs-keyword">\pagestyle</span>&#123;fancy&#125;<br><span class="hljs-comment">% \fancyhf&#123;&#125;</span><br><span class="hljs-comment">% \fancyhead[R]&#123;\leftmark&#125;</span><br><span class="hljs-comment">% \fancyhead[L]&#123;\rightmark&#125;</span><br><span class="hljs-keyword">\setlength</span>&#123;<span class="hljs-keyword">\headheight</span>&#125;&#123;14.5pt&#125;<br><br><span class="hljs-keyword">\setlength</span>&#123;<span class="hljs-keyword">\arrayrulewidth</span>&#125;&#123;0.5mm&#125;<br><span class="hljs-keyword">\setlength</span>&#123;<span class="hljs-keyword">\tabcolsep</span>&#125;&#123;18pt&#125;<br><span class="hljs-keyword">\renewcommand</span>&#123;<span class="hljs-keyword">\arraystretch</span>&#125;&#123;1.5&#125;<br><br><span class="hljs-keyword">\graphicspath</span>&#123; &#123;./img/&#125; &#125;<br><span class="hljs-keyword">\input</span>&#123;color.tex&#125;<br><span class="hljs-keyword">\input</span>&#123;style.tex&#125;<br><br><span class="hljs-keyword">\lstset</span>&#123;style=mystyle&#125;<br><br><span class="hljs-comment">%==================================%</span><br><span class="hljs-keyword">\title</span>&#123;<span class="hljs-keyword">\textbf</span>&#123;<span class="hljs-keyword">\LaTeX</span> 模板&#125; <span class="hljs-keyword">\\</span> &#123;<span class="hljs-keyword">\small</span> 简单的<span class="hljs-keyword">\LaTeX</span> 模板&#125;&#125;<br><span class="hljs-keyword">\author</span>&#123;Author&#125;<br><span class="hljs-keyword">\date</span>&#123;<span class="hljs-keyword">\today</span>&#125;<br><br><span class="hljs-keyword">\begin</span>&#123;document&#125;<br><span class="hljs-comment">% add custom cover</span><br><span class="hljs-comment">% \includepdf[pages=&#123;1&#125;]&#123;cover.pdf&#125;</span><br><span class="hljs-keyword">\maketitle</span><br><span class="hljs-keyword">\tableofcontents</span><br><span class="hljs-keyword">\newpage</span><br><br><span class="hljs-keyword">\section</span>&#123;Part 1&#125;<br><span class="hljs-keyword">\subfile</span>&#123;part.tex&#125;<br><br><span class="hljs-comment">% \bibliographystyle&#123;unsrt&#125;</span><br><span class="hljs-comment">% \bibliography&#123;refs&#125;</span><br><span class="hljs-keyword">\end</span>&#123;document&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="meta">% !TEX program = xelatex</span></span><br><span class="line"><span class="keyword">\documentclass</span>[UTF8, a4paper, 12pt]&#123;ctexart&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;fancyhdr&#125;</span><br><span class="line"><span class="keyword">\ctexset</span>&#123;section = &#123;format=&#123;<span class="keyword">\Large</span><span class="keyword">\bfseries</span>&#125;&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\usepackage</span>[left=1in, right=1in, top=1in, bottom=1in]&#123;geometry&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;listings&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;graphicx&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;subcaption&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;subfiles&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;fontspec&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[hidelinks]&#123;hyperref&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;cite&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;url&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;enumitem&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;ulem&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;pdfpages&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\pagestyle</span>&#123;fancy&#125;</span><br><span class="line"><span class="comment">% \fancyhf&#123;&#125;</span></span><br><span class="line"><span class="comment">% \fancyhead[R]&#123;\leftmark&#125;</span></span><br><span class="line"><span class="comment">% \fancyhead[L]&#123;\rightmark&#125;</span></span><br><span class="line"><span class="keyword">\setlength</span>&#123;<span class="keyword">\headheight</span>&#125;&#123;14.5pt&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\setlength</span>&#123;<span class="keyword">\arrayrulewidth</span>&#125;&#123;0.5mm&#125;</span><br><span class="line"><span class="keyword">\setlength</span>&#123;<span class="keyword">\tabcolsep</span>&#125;&#123;18pt&#125;</span><br><span class="line"><span class="keyword">\renewcommand</span>&#123;<span class="keyword">\arraystretch</span>&#125;&#123;1.5&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\graphicspath</span>&#123; &#123;./img/&#125; &#125;</span><br><span class="line"><span class="keyword">\input</span>&#123;color.tex&#125;</span><br><span class="line"><span class="keyword">\input</span>&#123;style.tex&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\lstset</span>&#123;style=mystyle&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">%==================================%</span></span><br><span class="line"><span class="keyword">\title</span>&#123;<span class="keyword">\textbf</span>&#123;<span class="keyword">\LaTeX</span> 模板&#125; <span class="keyword">\\</span> &#123;<span class="keyword">\small</span> 简单的<span class="keyword">\LaTeX</span> 模板&#125;&#125;</span><br><span class="line"><span class="keyword">\author</span>&#123;Author&#125;</span><br><span class="line"><span class="keyword">\date</span>&#123;<span class="keyword">\today</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="comment">% add custom cover</span></span><br><span class="line"><span class="comment">% \includepdf[pages=&#123;1&#125;]&#123;cover.pdf&#125;</span></span><br><span class="line"><span class="keyword">\maketitle</span></span><br><span class="line"><span class="keyword">\tableofcontents</span></span><br><span class="line"><span class="keyword">\newpage</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\section</span>&#123;Part 1&#125;</span><br><span class="line"><span class="keyword">\subfile</span>&#123;part.tex&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% \bibliographystyle&#123;unsrt&#125;</span></span><br><span class="line"><span class="comment">% \bibliography&#123;refs&#125;</span></span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="color"><a href="#color" class="headerlink" title="color"></a>color</h2><p><code>color.tex</code>是关于颜色的定义，在诸如定义代码样式时可以使用：</p>
-<figure class="highlight latex"><table><tr><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\usepackage</span>&#123;xcolor&#125;<br><br><span class="hljs-keyword">\definecolor</span>&#123;codegreen&#125;&#123;rgb&#125;&#123;0,0.6,0&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;codegray&#125;&#123;rgb&#125;&#123;0.5,0.5,0.5&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;codepurple&#125;&#123;rgb&#125;&#123;0.58,0,0.82&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;backcolour&#125;&#123;rgb&#125;&#123;0.95,0.95,0.92&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;seabornBlue&#125;&#123;RGB&#125;&#123;76,114,176&#125;<br><span class="hljs-comment">% colors</span><br><span class="hljs-keyword">\definecolor</span>&#123;white&#125;&#123;rgb&#125;&#123;1,1,1&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;black&#125;&#123;rgb&#125;&#123;0,0,0&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;middlegray&#125;&#123;rgb&#125;&#123;0.5,0.5,0.5&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;lightgray&#125;&#123;rgb&#125;&#123;.95,.95,.95&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;arsenic&#125;&#123;rgb&#125;&#123;0.23, 0.27, 0.29&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;arsenicLight&#125;&#123;rgb&#125;&#123;0.20, 0.20, 0.20&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;darkgray&#125;&#123;rgb&#125;&#123;.4,.4,.4&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;purple&#125;&#123;rgb&#125;&#123;0.65, 0.12, 0.82&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;orange&#125;&#123;rgb&#125;&#123;0.8,0.3,0.3&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;yac&#125;&#123;rgb&#125;&#123;0.6,0.6,0.1&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;green&#125;&#123;rgb&#125;&#123;.2,0.6,0.3&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;azure&#125;&#123;rgb&#125;&#123;0.0, 0.5, 1.0&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;editorGray&#125;&#123;rgb&#125;&#123;0.95, 0.95, 0.95&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;editorOcher&#125;&#123;rgb&#125;&#123;1, 0.5, 0&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;editorGreen&#125;&#123;rgb&#125;&#123;0, 0.5, 0&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;orange&#125;&#123;rgb&#125;&#123;1,0.45,0.13&#125;		<br><span class="hljs-keyword">\definecolor</span>&#123;olive&#125;&#123;rgb&#125;&#123;0.17,0.59,0.20&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;brown&#125;&#123;rgb&#125;&#123;0.69,0.31,0.31&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;purple&#125;&#123;rgb&#125;&#123;0.38,0.18,0.81&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;lightblue&#125;&#123;rgb&#125;&#123;0.1,0.57,0.7&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;lightred&#125;&#123;rgb&#125;&#123;1,0.4,0.5&#125;<br><br><span class="hljs-keyword">\definecolor</span>&#123;vscodered&#125;&#123;HTML&#125;&#123;E53935&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;vscodelightred&#125;&#123;HTML&#125;&#123;EF5350&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;vscodeblue&#125;&#123;HTML&#125;&#123;1565C0&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;vscodegreen&#125;&#123;HTML&#125;&#123;66BB6A&#125;<br><br><span class="hljs-keyword">\definecolor</span>&#123;lightblack&#125;&#123;HTML&#125;&#123;212121&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;darkraspberry&#125;&#123;rgb&#125;&#123;0.53, 0.15, 0.34&#125;<br><br><span class="hljs-comment">% blue hues</span><br><span class="hljs-keyword">\definecolor</span>&#123;bleudefrance&#125;&#123;rgb&#125;&#123;0.19, 0.55, 0.91&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;brandeisblue&#125;&#123;rgb&#125;&#123;0.0, 0.44, 1.0&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;blue(ncs)&#125;&#123;rgb&#125;&#123;0.0, 0.53, 0.74&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;coolblack&#125;&#123;rgb&#125;&#123;0.0, 0.18, 0.39&#125;<br><br><span class="hljs-comment">% red hues</span><br><span class="hljs-keyword">\definecolor</span>&#123;coralred&#125;&#123;rgb&#125;&#123;1.0, 0.25, 0.25&#125;<br><span class="hljs-keyword">\definecolor</span>&#123;darkred&#125;&#123;rgb&#125;&#123;0.55, 0.0, 0.0&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>&#123;xcolor&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;codegreen&#125;&#123;rgb&#125;&#123;0,0.6,0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;codegray&#125;&#123;rgb&#125;&#123;0.5,0.5,0.5&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;codepurple&#125;&#123;rgb&#125;&#123;0.58,0,0.82&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;backcolour&#125;&#123;rgb&#125;&#123;0.95,0.95,0.92&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;seabornBlue&#125;&#123;RGB&#125;&#123;76,114,176&#125;</span><br><span class="line"><span class="comment">% colors</span></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;white&#125;&#123;rgb&#125;&#123;1,1,1&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;black&#125;&#123;rgb&#125;&#123;0,0,0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;middlegray&#125;&#123;rgb&#125;&#123;0.5,0.5,0.5&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;lightgray&#125;&#123;rgb&#125;&#123;.95,.95,.95&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;arsenic&#125;&#123;rgb&#125;&#123;0.23, 0.27, 0.29&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;arsenicLight&#125;&#123;rgb&#125;&#123;0.20, 0.20, 0.20&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;darkgray&#125;&#123;rgb&#125;&#123;.4,.4,.4&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;purple&#125;&#123;rgb&#125;&#123;0.65, 0.12, 0.82&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;orange&#125;&#123;rgb&#125;&#123;0.8,0.3,0.3&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;yac&#125;&#123;rgb&#125;&#123;0.6,0.6,0.1&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;green&#125;&#123;rgb&#125;&#123;.2,0.6,0.3&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;azure&#125;&#123;rgb&#125;&#123;0.0, 0.5, 1.0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;editorGray&#125;&#123;rgb&#125;&#123;0.95, 0.95, 0.95&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;editorOcher&#125;&#123;rgb&#125;&#123;1, 0.5, 0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;editorGreen&#125;&#123;rgb&#125;&#123;0, 0.5, 0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;orange&#125;&#123;rgb&#125;&#123;1,0.45,0.13&#125;		</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;olive&#125;&#123;rgb&#125;&#123;0.17,0.59,0.20&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;brown&#125;&#123;rgb&#125;&#123;0.69,0.31,0.31&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;purple&#125;&#123;rgb&#125;&#123;0.38,0.18,0.81&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;lightblue&#125;&#123;rgb&#125;&#123;0.1,0.57,0.7&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;lightred&#125;&#123;rgb&#125;&#123;1,0.4,0.5&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;vscodered&#125;&#123;HTML&#125;&#123;E53935&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;vscodelightred&#125;&#123;HTML&#125;&#123;EF5350&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;vscodeblue&#125;&#123;HTML&#125;&#123;1565C0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;vscodegreen&#125;&#123;HTML&#125;&#123;66BB6A&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;lightblack&#125;&#123;HTML&#125;&#123;212121&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;darkraspberry&#125;&#123;rgb&#125;&#123;0.53, 0.15, 0.34&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% blue hues</span></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;bleudefrance&#125;&#123;rgb&#125;&#123;0.19, 0.55, 0.91&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;brandeisblue&#125;&#123;rgb&#125;&#123;0.0, 0.44, 1.0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;blue(ncs)&#125;&#123;rgb&#125;&#123;0.0, 0.53, 0.74&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;coolblack&#125;&#123;rgb&#125;&#123;0.0, 0.18, 0.39&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% red hues</span></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;coralred&#125;&#123;rgb&#125;&#123;1.0, 0.25, 0.25&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;darkred&#125;&#123;rgb&#125;&#123;0.55, 0.0, 0.0&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="style"><a href="#style" class="headerlink" title="style"></a>style</h2><p>部分样式的定义：</p>
-<figure class="highlight latex"><table><tr><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% define some style</span><br><br><span class="hljs-comment">% code style</span><br><span class="hljs-keyword">\lstdefinestyle</span>&#123;mystyle&#125;&#123;<br>	language=C++,<br>    backgroundcolor=<span class="hljs-keyword">\color</span>&#123;backcolour&#125;,   <br>    commentstyle=<span class="hljs-keyword">\color</span>&#123;codegreen&#125;<span class="hljs-keyword">\textit</span>,<br>    keywordstyle=<span class="hljs-keyword">\color</span>&#123;magenta&#125;<span class="hljs-keyword">\textbf</span>,<br>    numberstyle=<span class="hljs-keyword">\scriptsize</span><span class="hljs-keyword">\fontspec</span>&#123;Consolas&#125;<span class="hljs-keyword">\color</span>&#123;codegray&#125;,<br>    stringstyle=<span class="hljs-keyword">\color</span>&#123;codepurple&#125;,<br>	identifierstyle=<span class="hljs-keyword">\color</span>&#123;vscodeblue&#125;,<br>    basicstyle=<span class="hljs-keyword">\scriptsize</span><span class="hljs-keyword">\fontspec</span>&#123;Consolas&#125;,<br>    escapeinside=``,<br>    breakatwhitespace=false,         <br>    breaklines=true,                 <br>    captionpos=b,                    <br>    keepspaces=true,                 <br>    numbers=left,                    <br>    numbersep=-13pt,                  <br>    showspaces=false,                <br>    showstringspaces=false,<br>    showtabs=false,                  <br>    tabsize=4<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="comment">% define some style</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% code style</span></span><br><span class="line"><span class="keyword">\lstdefinestyle</span>&#123;mystyle&#125;&#123;</span><br><span class="line">	language=C++,</span><br><span class="line">    backgroundcolor=<span class="keyword">\color</span>&#123;backcolour&#125;,   </span><br><span class="line">    commentstyle=<span class="keyword">\color</span>&#123;codegreen&#125;<span class="keyword">\textit</span>,</span><br><span class="line">    keywordstyle=<span class="keyword">\color</span>&#123;magenta&#125;<span class="keyword">\textbf</span>,</span><br><span class="line">    numberstyle=<span class="keyword">\scriptsize</span><span class="keyword">\fontspec</span>&#123;Consolas&#125;<span class="keyword">\color</span>&#123;codegray&#125;,</span><br><span class="line">    stringstyle=<span class="keyword">\color</span>&#123;codepurple&#125;,</span><br><span class="line">	identifierstyle=<span class="keyword">\color</span>&#123;vscodeblue&#125;,</span><br><span class="line">    basicstyle=<span class="keyword">\scriptsize</span><span class="keyword">\fontspec</span>&#123;Consolas&#125;,</span><br><span class="line">    escapeinside=``,</span><br><span class="line">    breakatwhitespace=false,         </span><br><span class="line">    breaklines=true,                 </span><br><span class="line">    captionpos=b,                    </span><br><span class="line">    keepspaces=true,                 </span><br><span class="line">    numbers=left,                    </span><br><span class="line">    numbersep=-13pt,                  </span><br><span class="line">    showspaces=false,                </span><br><span class="line">    showstringspaces=false,</span><br><span class="line">    showtabs=false,                  </span><br><span class="line">    tabsize=4</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="part"><a href="#part" class="headerlink" title="part"></a>part</h2><p>章节分文件，为更好的组织文章：</p>
-<figure class="highlight latex"><table><tr><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\documentclass</span>[main.tex]&#123;subfiles&#125;<br><br><span class="hljs-keyword">\begin</span>&#123;document&#125;<br><span class="hljs-keyword">\section</span>&#123;Part 2&#125;<br>This is part 2.<br><br><span class="hljs-keyword">\end</span>&#123;document&#125;<br></code></pre></td></tr></table></figure>
-</div><div class="article-licensing box"><div class="licensing-title"><p>LaTex 模板</p><p><a href="https://yuanyangwangtj.github.io/2022/01/24/LaTex/latex/">https://yuanyangwangtj.github.io/2022/01/24/LaTex/latex/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Flying DutchMan</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2022-01-24</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-01-24</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/LaTeX/">LaTeX</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/01/23/python/gui/tkinter/"><span class="level-item">python tkinter学习笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/avatar.png" alt="DutchMan"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">DutchMan</p><p class="is-size-6 is-block">总是关山旧别情！</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>中国上海</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">4</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/yuanyangwangTJ" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/yuanyangwangTJ"><i class="fab fa-github"></i></a></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/LaTeX/"><span class="level-start"><span class="level-item">LaTeX</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/python/"><span class="level-start"><span class="level-item">python</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/categories/python/gui/"><span class="level-start"><span class="level-item">gui</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/LaTeX/"><span class="tag">LaTeX</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/gui/"><span class="tag">gui</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tkinter/"><span class="tag">tkinter</span><span class="tag">1</span></a></div></div></div></div></div></div><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><!--!--></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="DutchMan&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2024 Flying DutchMan</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
-        });</script></body></html>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[main.tex]&#123;subfiles&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\section</span>&#123;Part 2&#125;</span><br><span class="line">This is part 2.</span><br><span class="line"></span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LaTeX/" rel="tag"># LaTeX</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/23/python/gui/tkinter/" rel="prev" title="python tkinter学习笔记">
+                  <i class="fa fa-angle-left"></i> python tkinter学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">DutchMan</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
