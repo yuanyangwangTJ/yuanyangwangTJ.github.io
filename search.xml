@@ -21,8 +21,8 @@
   <entry>
     <title>LaTex 模板</title>
     <url>/2022/01/24/LaTex/latex/</url>
-    <content><![CDATA[<h1 id="LaTeX-模板"><a href="#LaTeX-模板" class="headerlink" title="$\LaTeX$ 模板"></a>$\LaTeX$ 模板</h1><p>因为$\LaTeX$在完成论文等工作时排版比较容易，但是入门难度比较高，在入门$\LaTeX$约一年后，我准备整理一下所获取的$\LaTeX$信息，构建属于自己的模板。</p>
-<p>模板采用分文件的方式，使作者更专注于自己的书写内容，为更好的支持中文，使用<code>xelatex</code>编译，目前已经测试通过，除却$\LaTeX$的基础功能之外，本模板包括的功能如下：</p>
+    <content><![CDATA[<h1 id="LaTeX-模板"><a href="#LaTeX-模板" class="headerlink" title="LaTeX 模板"></a>LaTeX 模板</h1><p>因为LaTeX在完成论文等工作时排版比较容易，但是入门难度比较高，在入门LaTeX约一年后，我准备整理一下所获取的LaTeX信息，构建属于自己的模板。</p>
+<p>模板采用分文件的方式，使作者更专注于自己的书写内容，为更好的支持中文，使用<code>xelatex</code>编译，目前已经测试通过，除却LaTeX的基础功能之外，本模板包括的功能如下：</p>
 <ul>
 <li>添加<code>pdf</code>作为封面</li>
 <li>参考文献功能</li>
@@ -46,22 +46,6 @@
       </categories>
       <tags>
         <tag>LaTeX</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python tkinter学习笔记</title>
-    <url>/2022/01/23/python/gui/tkinter/</url>
-    <content><![CDATA[<h1 id="Tkinter简介"><a href="#Tkinter简介" class="headerlink" title="Tkinter简介"></a>Tkinter简介</h1><p>Tkinter 是 Python 的标准 GUI 库。Python 使用 Tkinter 可以快速的创建 GUI 应用程序。</p>
-<p>由于 Tkinter 是内置到 python 的安装包中、只要安装好 Python 之后就能 import Tkinter 库、而且 IDLE 也是用 Tkinter 编写而成、对于简单的图形界面 Tkinter 还是能应付自如。</p>
-<h1 id="Tkinter编程"><a href="#Tkinter编程" class="headerlink" title="Tkinter编程"></a>Tkinter编程</h1>]]></content>
-      <categories>
-        <category>python</category>
-        <category>gui</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>gui</tag>
-        <tag>tkinter</tag>
       </tags>
   </entry>
 </search>
