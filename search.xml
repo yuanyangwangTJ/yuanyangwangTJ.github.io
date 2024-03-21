@@ -108,7 +108,7 @@
     <title>lab-193服务器配置说明</title>
     <url>/2024/03/21/Misc/lab-193%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<h1 id="193服务器说明"><a href="#193服务器说明" class="headerlink" title="193服务器说明"></a><code>193</code>服务器说明</h1><h2 id="ssh连接"><a href="#ssh连接" class="headerlink" title="ssh连接"></a>ssh连接</h2><p>用户<strong>必须</strong>在<code>lab417</code>组中，才可以进行ssh连接，<strong>推荐使用密钥连接方式</strong>.</p>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>在<code>/usr/local/etc/useradd.d</code>目录下，有创建用户的脚本，将新用户添加至<code>name.list</code>文件中，运行脚本即可，默认用户密码为用户名，并且将其加入管理员组和<code>lab417</code>组中.</p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>在<code>/usr/local/etc/useradd.d</code>目录下，有创建用户的脚本，将新用户添加至<code>name.list</code>文件中，运行脚本即可，默认将用户加入管理员组和<code>lab417</code>组中.</p>
 <p>如果手动添加用户，<strong>若需要ssh连接，请将用户附加到<code>lab417</code></strong>.</p>
 <h2 id="fail2ban"><a href="#fail2ban" class="headerlink" title="fail2ban"></a>fail2ban</h2><p>处于安全需求，引入此组件，可以一定程度上防止ssh爆破攻击，此组件会封禁持续尝试进行ssh连接的IP.</p>
 <p>封禁配置在<code>/etc/fail2ban/jail.conf</code>中，简单修改了封禁规则的参数，如果<strong>IP多次连接失败，会封禁</strong>10min.</p>
