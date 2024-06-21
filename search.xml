@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/01/20/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>LaTex 模板</title>
+    <url>/2022/01/24/LaTex/latex/</url>
+    <content><![CDATA[<h1 id="LaTeX-模板"><a href="#LaTeX-模板" class="headerlink" title="LaTeX 模板"></a>LaTeX 模板</h1><p>因为LaTeX在完成论文等工作时排版比较容易，但是入门难度比较高，在入门LaTeX约一年后，我准备整理一下所获取的LaTeX信息，构建属于自己的模板。</p>
+<p>模板采用分文件的方式，使作者更专注于自己的书写内容，为更好的支持中文，使用<code>xelatex</code>编译，目前已经测试通过，除却LaTeX的基础功能之外，本模板包括的功能如下：</p>
+<ul>
+<li>添加<code>pdf</code>作为封面</li>
+<li>参考文献功能</li>
+<li>…</li>
+</ul>
+<h1 id="模板文件"><a href="#模板文件" class="headerlink" title="模板文件"></a>模板文件</h1><p>模板文件如下所示，可以下载使用：</p>
+<h2 id="main"><a href="#main" class="headerlink" title="main"></a>main</h2><p><code>main.tex</code>是主文件，如下：</p>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="meta">% !TEX program = xelatex</span></span><br><span class="line"><span class="keyword">\documentclass</span>[UTF8, a4paper, 12pt]&#123;ctexart&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;fancyhdr&#125;</span><br><span class="line"><span class="keyword">\ctexset</span>&#123;section = &#123;format=&#123;<span class="keyword">\Large</span><span class="keyword">\bfseries</span>&#125;&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\usepackage</span>[left=1in, right=1in, top=1in, bottom=1in]&#123;geometry&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;listings&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;graphicx&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;subcaption&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;subfiles&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;fontspec&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[hidelinks]&#123;hyperref&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;cite&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;url&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;enumitem&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;ulem&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;pdfpages&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\pagestyle</span>&#123;fancy&#125;</span><br><span class="line"><span class="comment">% \fancyhf&#123;&#125;</span></span><br><span class="line"><span class="comment">% \fancyhead[R]&#123;\leftmark&#125;</span></span><br><span class="line"><span class="comment">% \fancyhead[L]&#123;\rightmark&#125;</span></span><br><span class="line"><span class="keyword">\setlength</span>&#123;<span class="keyword">\headheight</span>&#125;&#123;14.5pt&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\setlength</span>&#123;<span class="keyword">\arrayrulewidth</span>&#125;&#123;0.5mm&#125;</span><br><span class="line"><span class="keyword">\setlength</span>&#123;<span class="keyword">\tabcolsep</span>&#125;&#123;18pt&#125;</span><br><span class="line"><span class="keyword">\renewcommand</span>&#123;<span class="keyword">\arraystretch</span>&#125;&#123;1.5&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\graphicspath</span>&#123; &#123;./img/&#125; &#125;</span><br><span class="line"><span class="keyword">\input</span>&#123;color.tex&#125;</span><br><span class="line"><span class="keyword">\input</span>&#123;style.tex&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\lstset</span>&#123;style=mystyle&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">%==================================%</span></span><br><span class="line"><span class="keyword">\title</span>&#123;<span class="keyword">\textbf</span>&#123;<span class="keyword">\LaTeX</span> 模板&#125; <span class="keyword">\\</span> &#123;<span class="keyword">\small</span> 简单的<span class="keyword">\LaTeX</span> 模板&#125;&#125;</span><br><span class="line"><span class="keyword">\author</span>&#123;Author&#125;</span><br><span class="line"><span class="keyword">\date</span>&#123;<span class="keyword">\today</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="comment">% add custom cover</span></span><br><span class="line"><span class="comment">% \includepdf[pages=&#123;1&#125;]&#123;cover.pdf&#125;</span></span><br><span class="line"><span class="keyword">\maketitle</span></span><br><span class="line"><span class="keyword">\tableofcontents</span></span><br><span class="line"><span class="keyword">\newpage</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\section</span>&#123;Part 1&#125;</span><br><span class="line"><span class="keyword">\subfile</span>&#123;part.tex&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% \bibliographystyle&#123;unsrt&#125;</span></span><br><span class="line"><span class="comment">% \bibliography&#123;refs&#125;</span></span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="color"><a href="#color" class="headerlink" title="color"></a>color</h2><p><code>color.tex</code>是关于颜色的定义，在诸如定义代码样式时可以使用：</p>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>&#123;xcolor&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;codegreen&#125;&#123;rgb&#125;&#123;0,0.6,0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;codegray&#125;&#123;rgb&#125;&#123;0.5,0.5,0.5&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;codepurple&#125;&#123;rgb&#125;&#123;0.58,0,0.82&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;backcolour&#125;&#123;rgb&#125;&#123;0.95,0.95,0.92&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;seabornBlue&#125;&#123;RGB&#125;&#123;76,114,176&#125;</span><br><span class="line"><span class="comment">% colors</span></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;white&#125;&#123;rgb&#125;&#123;1,1,1&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;black&#125;&#123;rgb&#125;&#123;0,0,0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;middlegray&#125;&#123;rgb&#125;&#123;0.5,0.5,0.5&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;lightgray&#125;&#123;rgb&#125;&#123;.95,.95,.95&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;arsenic&#125;&#123;rgb&#125;&#123;0.23, 0.27, 0.29&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;arsenicLight&#125;&#123;rgb&#125;&#123;0.20, 0.20, 0.20&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;darkgray&#125;&#123;rgb&#125;&#123;.4,.4,.4&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;purple&#125;&#123;rgb&#125;&#123;0.65, 0.12, 0.82&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;orange&#125;&#123;rgb&#125;&#123;0.8,0.3,0.3&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;yac&#125;&#123;rgb&#125;&#123;0.6,0.6,0.1&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;green&#125;&#123;rgb&#125;&#123;.2,0.6,0.3&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;azure&#125;&#123;rgb&#125;&#123;0.0, 0.5, 1.0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;editorGray&#125;&#123;rgb&#125;&#123;0.95, 0.95, 0.95&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;editorOcher&#125;&#123;rgb&#125;&#123;1, 0.5, 0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;editorGreen&#125;&#123;rgb&#125;&#123;0, 0.5, 0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;orange&#125;&#123;rgb&#125;&#123;1,0.45,0.13&#125;		</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;olive&#125;&#123;rgb&#125;&#123;0.17,0.59,0.20&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;brown&#125;&#123;rgb&#125;&#123;0.69,0.31,0.31&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;purple&#125;&#123;rgb&#125;&#123;0.38,0.18,0.81&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;lightblue&#125;&#123;rgb&#125;&#123;0.1,0.57,0.7&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;lightred&#125;&#123;rgb&#125;&#123;1,0.4,0.5&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;vscodered&#125;&#123;HTML&#125;&#123;E53935&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;vscodelightred&#125;&#123;HTML&#125;&#123;EF5350&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;vscodeblue&#125;&#123;HTML&#125;&#123;1565C0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;vscodegreen&#125;&#123;HTML&#125;&#123;66BB6A&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;lightblack&#125;&#123;HTML&#125;&#123;212121&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;darkraspberry&#125;&#123;rgb&#125;&#123;0.53, 0.15, 0.34&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% blue hues</span></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;bleudefrance&#125;&#123;rgb&#125;&#123;0.19, 0.55, 0.91&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;brandeisblue&#125;&#123;rgb&#125;&#123;0.0, 0.44, 1.0&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;blue(ncs)&#125;&#123;rgb&#125;&#123;0.0, 0.53, 0.74&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;coolblack&#125;&#123;rgb&#125;&#123;0.0, 0.18, 0.39&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% red hues</span></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;coralred&#125;&#123;rgb&#125;&#123;1.0, 0.25, 0.25&#125;</span><br><span class="line"><span class="keyword">\definecolor</span>&#123;darkred&#125;&#123;rgb&#125;&#123;0.55, 0.0, 0.0&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="style"><a href="#style" class="headerlink" title="style"></a>style</h2><p>部分样式的定义：</p>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="comment">% define some style</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% code style</span></span><br><span class="line"><span class="keyword">\lstdefinestyle</span>&#123;mystyle&#125;&#123;</span><br><span class="line">	language=C++,</span><br><span class="line">    backgroundcolor=<span class="keyword">\color</span>&#123;backcolour&#125;,   </span><br><span class="line">    commentstyle=<span class="keyword">\color</span>&#123;codegreen&#125;<span class="keyword">\textit</span>,</span><br><span class="line">    keywordstyle=<span class="keyword">\color</span>&#123;magenta&#125;<span class="keyword">\textbf</span>,</span><br><span class="line">    numberstyle=<span class="keyword">\scriptsize</span><span class="keyword">\fontspec</span>&#123;Consolas&#125;<span class="keyword">\color</span>&#123;codegray&#125;,</span><br><span class="line">    stringstyle=<span class="keyword">\color</span>&#123;codepurple&#125;,</span><br><span class="line">	identifierstyle=<span class="keyword">\color</span>&#123;vscodeblue&#125;,</span><br><span class="line">    basicstyle=<span class="keyword">\scriptsize</span><span class="keyword">\fontspec</span>&#123;Consolas&#125;,</span><br><span class="line">    escapeinside=``,</span><br><span class="line">    breakatwhitespace=false,         </span><br><span class="line">    breaklines=true,                 </span><br><span class="line">    captionpos=b,                    </span><br><span class="line">    keepspaces=true,                 </span><br><span class="line">    numbers=left,                    </span><br><span class="line">    numbersep=-13pt,                  </span><br><span class="line">    showspaces=false,                </span><br><span class="line">    showstringspaces=false,</span><br><span class="line">    showtabs=false,                  </span><br><span class="line">    tabsize=4</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="part"><a href="#part" class="headerlink" title="part"></a>part</h2><p>章节分文件，为更好的组织文章：</p>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[main.tex]&#123;subfiles&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\section</span>&#123;Part 2&#125;</span><br><span class="line">This is part 2.</span><br><span class="line"></span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LaTeX</category>
+      </categories>
+      <tags>
+        <tag>LaTeX</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>conda和pip换源</title>
+    <url>/2024/03/04/Misc/conda%E5%92%8Cpip%E6%8D%A2%E6%BA%90/</url>
+    <content><![CDATA[<h1 id="Linux环境"><a href="#Linux环境" class="headerlink" title="Linux环境"></a>Linux环境</h1><h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><p>配置文件<code>~/.condarc</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: <span class="literal">true</span></span><br><span class="line">default_channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">custom_channels:</span><br><span class="line">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>查看已安装源：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda config --show-sources</span><br></pre></td></tr></table></figure>
+
+<p>清除索引缓存：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda clean -i</span><br></pre></td></tr></table></figure>
+
+<h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><h3 id="配置文件方式"><a href="#配置文件方式" class="headerlink" title="配置文件方式"></a>配置文件方式</h3><p>修改配置文件<code>~/.pip/pip.conf</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://mirrors.bfsu.edu.cn/pypi/web/simple</span><br><span class="line">format = columns</span><br><span class="line">trusted-host = mirrors.bfsu.edu.cn</span><br></pre></td></tr></table></figure>
+
+<h3 id="命令方式"><a href="#命令方式" class="headerlink" title="命令方式"></a>命令方式</h3><p>临时使用：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package</span><br></pre></td></tr></table></figure>
+
+<p>永久更新（需pip&gt;&#x3D;10.0.0）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip config <span class="built_in">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<p>这个方式会将配置写入文件<code>~/.config/pip/pip.conf</code>，尚未测试两种配置同时使用的效果。</p>
+]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ssh密钥连接问题</title>
+    <url>/2024/01/11/Misc/ssh%E5%AF%86%E9%92%A5%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="密钥连接问题"><a href="#密钥连接问题" class="headerlink" title="密钥连接问题"></a>密钥连接问题</h1><p>在使用ssh连接时，注意到可以使用密码连接，但是密钥连接失效，如果下面命令连接：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -o PasswordAuthentication=no user@hostname</span><br></pre></td></tr></table></figure>
+
+<p>出现<code>Permission denied (publickey,password)</code>错误，这个错误表明某处权限出现问题，但可惜我并未及时注意到。</p>
+<h1 id="ssh调试"><a href="#ssh调试" class="headerlink" title="ssh调试"></a>ssh调试</h1><p>苦经尝试，终于发现一种<a href="https://blog.csdn.net/wcjlyj/article/details/124148603">ssh调试</a>的方法，记录如下：</p>
+<ul>
+<li><p>服务器端输入：</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo /usr/sbin/sshd -p 10022 -d</span><br></pre></td></tr></table></figure>
+
+<p>  <code>-d</code>表示开启调试模式。</p>
+</li>
+<li><p>客户端输入：</p>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -v usename@ip -p 10022</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>这样，便可以详细输出连接细节，包括了详细的错误信息。</p>
+<h1 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h1><p>经过调试发现，问题出现在<code>authorized_keys</code>文件的权限，虽然在此之前已经有博客说明这个问题，但并未重视，为此，需学习一下<strong>Linux文件权限</strong>的知识。当然，了解这种调试的思想更为宝贵，出现问题之后应该考虑<strong>日志以及调试方法</strong>。</p>
+<p>最后，还有一个问题：<strong>谁动了文件权限？！！</strong></p>
+]]></content>
+      <categories>
+        <category>Misc</category>
+      </categories>
+      <tags>
+        <tag>ssh</tag>
+        <tag>misc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>lab-xxx服务器配置说明</title>
+    <url>/2024/03/21/Misc/lab-193%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E/</url>
+    <content><![CDATA[<h1 id="xxx服务器说明"><a href="#xxx服务器说明" class="headerlink" title="xxx服务器说明"></a><code>xxx</code>服务器说明</h1><blockquote>
+<p>个人配置记录，不足为外人道也，故隐去IP等，写为x</p>
+</blockquote>
+<h2 id="ssh连接"><a href="#ssh连接" class="headerlink" title="ssh连接"></a>ssh连接</h2><p>用户<strong>必须</strong>在<code>labxxx</code>组中，才可以进行ssh连接，<strong>推荐使用密钥连接方式</strong>.</p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>在<code>/usr/local/etc/useradd.d</code>目录下，有创建用户的脚本，将新用户添加至<code>name.list</code>文件中，运行脚本即可，默认将用户加入管理员组和<code>labxxx</code>组中.</p>
+<p>如果手动添加用户，<strong>若需要ssh连接，请将用户附加到<code>labxxx</code></strong>.</p>
+<h2 id="fail2ban"><a href="#fail2ban" class="headerlink" title="fail2ban"></a>fail2ban</h2><p>处于安全需求，引入此组件，可以一定程度上防止ssh爆破攻击，此组件会封禁持续尝试进行ssh连接的IP.</p>
+<p>封禁配置在<code>/etc/fail2ban/jail.conf</code>中，简单修改了封禁规则的参数，如果<strong>IP多次连接失败，会封禁</strong>10min.</p>
+<p>查看封禁状态：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo fail2ban-client status sshd</span><br></pre></td></tr></table></figure>
+
+<p>解除IP封禁：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo fail2ban-client <span class="built_in">set</span> sshd unbanip 10.xx.xx.xx</span><br></pre></td></tr></table></figure>
+
+<h2 id="显卡驱动与cuda"><a href="#显卡驱动与cuda" class="headerlink" title="显卡驱动与cuda"></a>显卡驱动与cuda</h2><p>显卡驱动为<code>550</code>版本，非必要不升级.</p>
+<p>cuda为<code>12.1</code>版本，截至<code>2024/03/21</code>，最新版本已经是<code>12.4</code>，但是考虑到<code>pytorch</code>官网支持的cuda最新版本为<code>12.1</code>，故保持不变，考虑当前主机<code>apt源</code>已经包含cuda，为防止apt升级命令影响cuda，所以将这些包设置为<code>hold</code>状态，可以通过下面命令查看：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-mark showhold</span><br></pre></td></tr></table></figure>
+
+<p>当然，可以手动升级.</p>
+<p>另外，cuda在安装时需要手动将路径加入环境变量，为了针对所有用户生效，在<code>/etc/profile.d/cuda_path.sh</code>中已经设置了变量，单个用户无需设置，具体可查看此文件.</p>
+<h1 id="关于重装系统"><a href="#关于重装系统" class="headerlink" title="关于重装系统"></a>关于重装系统</h1><h2 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h2><p>一般情况下，重装系统只会导致系统盘数据丢失，所以外挂磁盘数据<strong>理论</strong>是可以保留，如果是物理磁盘，只需<code>umount</code>即可。但是对于<code>lvm</code>格式卷，一定需要注意逻辑卷组之间的联系，<strong>尤其是要解除和系统盘之间的联系</strong>，重装系统之后，恢复<code>lvm</code>的数据，可以上网搜索，大致指令应该是使用<code>pvscan</code>扫描恢复.</p>
+<h2 id="BIOS"><a href="#BIOS" class="headerlink" title="BIOS"></a>BIOS</h2><p>开机按<code>DEL</code>键，进入BIOS，使用启动盘重装系统.</p>
+<h2 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h2><p>系统重装时，会要求配置网关，注意记录原服务器网络配置，现将193配置记录如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 外网网卡</span><br><span class="line">auto ens5f0</span><br><span class="line">iface ens5f0 inet static</span><br><span class="line">address xx.xx.xx.xx</span><br><span class="line">netmask 255.255.255.0</span><br><span class="line">gateway xx.xx.xx.254</span><br><span class="line"># 内网网卡</span><br><span class="line">auto ens7f1</span><br><span class="line">iface ens7f1 inet static</span><br><span class="line">address 10.0.101.193</span><br><span class="line">netmask 255.255.0.0</span><br></pre></td></tr></table></figure>
+
+<p>最好也设置一下DNS服务器，比如<code>8.8.8.8/114.114.114.114</code>，以方便连接外网.</p>
+<h2 id="移除U盘重启"><a href="#移除U盘重启" class="headerlink" title="移除U盘重启"></a>移除U盘重启</h2><p>移除U盘重启后，可能在网络检查会花费一定时间，等待即可，最后，会停在<code>reached target...</code>，如果时间过长，按一下键盘，可能会有意外之喜.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>opencv问题记录</title>
+    <url>/2024/06/19/Misc/opencv%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>opencv在安装使用的过程中，有很多的问题出现，现记录如下：</p>
+<h1 id="Linux-python版本"><a href="#Linux-python版本" class="headerlink" title="Linux python版本"></a>Linux python版本</h1><p>下面讨论的安装环境为服务器版的Linux，并不带图形界面，将会尝试安装<strong>python</strong>版本的<strong>opencv</strong>，环境使用<strong>conda</strong>创建.</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>python版opencv的安装有全局和局部的安装，全局使用Linux包管理器，比如<code>apt</code>等管理，此方式还未尝试，日后若有使用，再做记录，现讨论局部安装，即在conda环境下安装opencv。</p>
+<p>使用<code>conda install</code>命令安装的opencv，在索引补全上存在问题（<em>conda测试安装版本为4.7，其他版本不保证</em>)，故<strong>推荐使用pip</strong>安装，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip install opencv-python</span><br></pre></td></tr></table></figure>
+
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><blockquote>
+<p>opencv可不止一个坑！！！</p>
+</blockquote>
+<blockquote>
+<p>这里先说结论：如果只需要使用opencv提供的算法等函数，并不调用显示查看的函数，上面的安装并没有问题，但是如果<strong>在无GUI的Linux服务器</strong>上尝试调用<code>imshow</code>等显示函数，会出现这些问题。<strong>推荐的解决方式是放弃这个函数，使用其他方式，比如matplotlib等来查看。</strong>否则，无异于浪费生命！</p>
+</blockquote>
+<p>先使用一个简单的测试程序，验证opencv显示函数是否可以成功运行：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line">img = cv2.imread(<span class="string">&#x27;./img.xxx&#x27;</span>, flags=<span class="number">1</span>)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;demo&#x27;</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>没有出现正常的图片显示，或者出现图片控制台输出有问题，继续如下：</p>
+<h3 id="opencv-headless与contrib"><a href="#opencv-headless与contrib" class="headerlink" title="opencv-headless与contrib"></a>opencv-headless与contrib</h3><p>脚本命令<code>python file.py</code>命令运行，出现下面问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OpenCV(4.9.0) /io/opencv/modules/highgui/src/window.cpp:1272: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function &#x27;cvShowImage&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>这是由于安装的opencv并非满血版本导致，可以尝试使用如下命令解决，<a href="https://stackoverflow.com/questions/67120450/error-2unspecified-error-the-function-is-not-implemented-rebuild-the-libra">来源链接</a>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip uninstall opencv-python-headless -y</span><br><span class="line">pip install opencv-python --upgrade</span><br></pre></td></tr></table></figure>
+
+<p><code>opencv-python-headless</code>是<strong>一个不带图形界面的版本的OpenCV</strong>，它可以用来进行图像处理和计算机视觉任务，但是不能用来显示图像或视频，这也解释了为什么上面的代码会出现问题。</p>
+<p>另外，结合<a href="https://stackoverflow.com/questions/50783177/opencv-the-function-is-not-implemented-rebuild-the-library-with-windows/52575640#52575640">stackoverflow的回答</a>，也可以使用如下安装命令解决问题：</p>
+<blockquote>
+<p><strong>两个都是stackoverflow的认证回答，两者应该都是补充安装opencv其他部分</strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install opencv-python</span><br><span class="line">pip install opencv-contrib-python </span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>opencv-contrib</code>是加强版opencv，除了主模块，还包括一些增强模块以及测试的新算法，验证成熟之后，再加入主模块，算是有社区支持。</p>
+<h3 id="QT报错"><a href="#QT报错" class="headerlink" title="QT报错"></a>QT报错</h3><p>上面问题解决之后，再次运行程序，在无<code>X Forward</code>的终端下，错误信息应该会<strong>再次升级</strong>，出现<code>core dumped</code>，在vscode jupyter中，这个问题表现为<code>kernel dead</code>，脚本运行可能报错如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">qt.qpa.xcb: could not connect to display </span><br><span class="line">qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot; in &quot;/home/user/miniconda3/envs/CV/lib/python3.9/site-packages/cv2/qt/plugins&quot; even though it was found.</span><br><span class="line">This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span><br><span class="line"></span><br><span class="line">Available platform plugins are: xcb, eglfs, minimal, minimalegl, offscreen, vnc, webgl.</span><br><span class="line"></span><br><span class="line">Aborted (core dumped)</span><br></pre></td></tr></table></figure>
+
+<p>这个错误出现的原因很简单，无GUI的服务器怎么可能运行图形化的程序，解决方式是<strong>开启X11转发</strong>，可能需要服务器安装Gtk等，<strong>实现转发最容易的方式是使用mobaxterm这种带有X11的软件</strong>。</p>
+<p><img src="https://raw.githubusercontent.com/yuanyangwangTJ/Picture/master/img/202406191854572.png" alt="image-20240619185113758"></p>
+<h3 id="QT版本兼容性"><a href="#QT版本兼容性" class="headerlink" title="QT版本兼容性"></a>QT版本兼容性</h3><p>即使走到这一步，也依旧有可能遇到问题，程序可以运行，图像也显示，但是终端打印如下的信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">QObject::moveToThread: Current thread (0x23f5ac0) is not the object&#x27;s thread (0x24e4ca0).</span><br><span class="line">Cannot move to target thread (0x23f5ac0)</span><br></pre></td></tr></table></figure>
+
+<p>搜索发现，这个问题是因为QT和opencv版本之间不兼容导致的，但是很遗憾，还未找到解决方案，网上有建议对opencv进行降级处理，但最终也没有找到合适的对应版本。</p>
+<h2 id="opencv显示图片"><a href="#opencv显示图片" class="headerlink" title="opencv显示图片"></a>opencv显示图片</h2><p>既然使用<code>imshow</code>显示，是在浪费生命，那么下面给出可用的显示图片方案，<a href="https://stackoverflow.com/a/47821222">参考链接</a>：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">&#x27;path_to_image&#x27;</span>)</span><br><span class="line"><span class="comment"># plt.imshow(img, cmap = &#x27;gray&#x27;, interpolation = &#x27;bicubic&#x27;)</span></span><br><span class="line">plt.imshow(img)</span><br><span class="line">plt.xticks([]), plt.yticks([])  <span class="comment"># to hide tick values on X and Y axis</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>这样，便可以正常查看图片了，<strong>有一种兜兜转转回原地的感觉</strong>？！</p>
+]]></content>
+      <categories>
+        <category>Misc</category>
+      </categories>
+      <tags>
+        <tag>opencv</tag>
+      </tags>
+  </entry>
+</search>

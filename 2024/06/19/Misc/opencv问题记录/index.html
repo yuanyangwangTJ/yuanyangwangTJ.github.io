@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/blog.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/blog.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yuanyangwangtj.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="opencv在安装使用的过程中，有很多的问题出现，现记录如下： Linux python版本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="opencv问题记录">
+<meta property="og:url" content="https://yuanyangwangtj.github.io/2024/06/19/Misc/opencv%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="DutchMan&#39;s Blog">
+<meta property="og:description" content="opencv在安装使用的过程中，有很多的问题出现，现记录如下： Linux python版本">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/yuanyangwangTJ/Picture/master/img/202406191854572.png">
+<meta property="article:published_time" content="2024-06-19T10:14:57.000Z">
+<meta property="article:modified_time" content="2024-06-19T10:54:53.731Z">
+<meta property="article:author" content="Flying DutchMan">
+<meta property="article:tag" content="opencv">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yuanyangwangTJ/Picture/master/img/202406191854572.png">
+
+
+<link rel="canonical" href="https://yuanyangwangtj.github.io/2024/06/19/Misc/opencv%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yuanyangwangtj.github.io/2024/06/19/Misc/opencv%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/","path":"2024/06/19/Misc/opencv问题记录/","title":"opencv问题记录"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>opencv问题记录 | DutchMan's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">DutchMan's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-python%E7%89%88%E6%9C%AC"><span class="nav-number">1.</span> <span class="nav-text">Linux python版本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FAQ"><span class="nav-number">1.2.</span> <span class="nav-text">FAQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#opencv-headless%E4%B8%8Econtrib"><span class="nav-number">1.2.1.</span> <span class="nav-text">opencv-headless与contrib</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QT%E6%8A%A5%E9%94%99"><span class="nav-number">1.2.2.</span> <span class="nav-text">QT报错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QT%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="nav-number">1.2.3.</span> <span class="nav-text">QT版本兼容性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#opencv%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87"><span class="nav-number">1.3.</span> <span class="nav-text">opencv显示图片</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Flying DutchMan</p>
+  <div class="site-description" itemprop="description">总是关山旧别情！</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yuanyangwangTJ" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yuanyangwangTJ" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yuanyangwangtj.github.io/2024/06/19/Misc/opencv%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Flying DutchMan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DutchMan's Blog">
+      <meta itemprop="description" content="总是关山旧别情！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="opencv问题记录 | DutchMan's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          opencv问题记录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-19 18:14:57 / 修改时间：18:54:53" itemprop="dateCreated datePublished" datetime="2024-06-19T18:14:57+08:00">2024-06-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Misc/" itemprop="url" rel="index"><span itemprop="name">Misc</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>opencv在安装使用的过程中，有很多的问题出现，现记录如下：</p>
+<h1 id="Linux-python版本"><a href="#Linux-python版本" class="headerlink" title="Linux python版本"></a>Linux python版本</h1><p>下面讨论的安装环境为服务器版的Linux，并不带图形界面，将会尝试安装<strong>python</strong>版本的<strong>opencv</strong>，环境使用<strong>conda</strong>创建.</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>python版opencv的安装有全局和局部的安装，全局使用Linux包管理器，比如<code>apt</code>等管理，此方式还未尝试，日后若有使用，再做记录，现讨论局部安装，即在conda环境下安装opencv。</p>
+<p>使用<code>conda install</code>命令安装的opencv，在索引补全上存在问题（<em>conda测试安装版本为4.7，其他版本不保证</em>)，故<strong>推荐使用pip</strong>安装，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip install opencv-python</span><br></pre></td></tr></table></figure>
+
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><blockquote>
+<p>opencv可不止一个坑！！！</p>
+</blockquote>
+<blockquote>
+<p>这里先说结论：如果只需要使用opencv提供的算法等函数，并不调用显示查看的函数，上面的安装并没有问题，但是如果<strong>在无GUI的Linux服务器</strong>上尝试调用<code>imshow</code>等显示函数，会出现这些问题。<strong>推荐的解决方式是放弃这个函数，使用其他方式，比如matplotlib等来查看。</strong>否则，无异于浪费生命！</p>
+</blockquote>
+<p>先使用一个简单的测试程序，验证opencv显示函数是否可以成功运行：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line">img = cv2.imread(<span class="string">&#x27;./img.xxx&#x27;</span>, flags=<span class="number">1</span>)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;demo&#x27;</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>没有出现正常的图片显示，或者出现图片控制台输出有问题，继续如下：</p>
+<h3 id="opencv-headless与contrib"><a href="#opencv-headless与contrib" class="headerlink" title="opencv-headless与contrib"></a>opencv-headless与contrib</h3><p>脚本命令<code>python file.py</code>命令运行，出现下面问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OpenCV(4.9.0) /io/opencv/modules/highgui/src/window.cpp:1272: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function &#x27;cvShowImage&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>这是由于安装的opencv并非满血版本导致，可以尝试使用如下命令解决，<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/67120450/error-2unspecified-error-the-function-is-not-implemented-rebuild-the-libra">来源链接</a>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip uninstall opencv-python-headless -y</span><br><span class="line">pip install opencv-python --upgrade</span><br></pre></td></tr></table></figure>
+
+<p><code>opencv-python-headless</code>是<strong>一个不带图形界面的版本的OpenCV</strong>，它可以用来进行图像处理和计算机视觉任务，但是不能用来显示图像或视频，这也解释了为什么上面的代码会出现问题。</p>
+<p>另外，结合<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/50783177/opencv-the-function-is-not-implemented-rebuild-the-library-with-windows/52575640#52575640">stackoverflow的回答</a>，也可以使用如下安装命令解决问题：</p>
+<blockquote>
+<p><strong>两个都是stackoverflow的认证回答，两者应该都是补充安装opencv其他部分</strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install opencv-python</span><br><span class="line">pip install opencv-contrib-python </span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>opencv-contrib</code>是加强版opencv，除了主模块，还包括一些增强模块以及测试的新算法，验证成熟之后，再加入主模块，算是有社区支持。</p>
+<h3 id="QT报错"><a href="#QT报错" class="headerlink" title="QT报错"></a>QT报错</h3><p>上面问题解决之后，再次运行程序，在无<code>X Forward</code>的终端下，错误信息应该会<strong>再次升级</strong>，出现<code>core dumped</code>，在vscode jupyter中，这个问题表现为<code>kernel dead</code>，脚本运行可能报错如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">qt.qpa.xcb: could not connect to display </span><br><span class="line">qt.qpa.plugin: Could not load the Qt platform plugin &quot;xcb&quot; in &quot;/home/user/miniconda3/envs/CV/lib/python3.9/site-packages/cv2/qt/plugins&quot; even though it was found.</span><br><span class="line">This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.</span><br><span class="line"></span><br><span class="line">Available platform plugins are: xcb, eglfs, minimal, minimalegl, offscreen, vnc, webgl.</span><br><span class="line"></span><br><span class="line">Aborted (core dumped)</span><br></pre></td></tr></table></figure>
+
+<p>这个错误出现的原因很简单，无GUI的服务器怎么可能运行图形化的程序，解决方式是<strong>开启X11转发</strong>，可能需要服务器安装Gtk等，<strong>实现转发最容易的方式是使用mobaxterm这种带有X11的软件</strong>。</p>
+<p><img src="https://raw.githubusercontent.com/yuanyangwangTJ/Picture/master/img/202406191854572.png" alt="image-20240619185113758"></p>
+<h3 id="QT版本兼容性"><a href="#QT版本兼容性" class="headerlink" title="QT版本兼容性"></a>QT版本兼容性</h3><p>即使走到这一步，也依旧有可能遇到问题，程序可以运行，图像也显示，但是终端打印如下的信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">QObject::moveToThread: Current thread (0x23f5ac0) is not the object&#x27;s thread (0x24e4ca0).</span><br><span class="line">Cannot move to target thread (0x23f5ac0)</span><br></pre></td></tr></table></figure>
+
+<p>搜索发现，这个问题是因为QT和opencv版本之间不兼容导致的，但是很遗憾，还未找到解决方案，网上有建议对opencv进行降级处理，但最终也没有找到合适的对应版本。</p>
+<h2 id="opencv显示图片"><a href="#opencv显示图片" class="headerlink" title="opencv显示图片"></a>opencv显示图片</h2><p>既然使用<code>imshow</code>显示，是在浪费生命，那么下面给出可用的显示图片方案，<a target="_blank" rel="noopener" href="https://stackoverflow.com/a/47821222">参考链接</a>：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">img = cv2.imread(<span class="string">&#x27;path_to_image&#x27;</span>)</span><br><span class="line"><span class="comment"># plt.imshow(img, cmap = &#x27;gray&#x27;, interpolation = &#x27;bicubic&#x27;)</span></span><br><span class="line">plt.imshow(img)</span><br><span class="line">plt.xticks([]), plt.yticks([])  <span class="comment"># to hide tick values on X and Y axis</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>这样，便可以正常查看图片了，<strong>有一种兜兜转转回原地的感觉</strong>？！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/opencv/" rel="tag"># opencv</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/03/21/Misc/lab-193%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E/" rel="prev" title="lab-xxx服务器配置说明">
+                  <i class="fa fa-angle-left"></i> lab-xxx服务器配置说明
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Flying DutchMan</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
