@@ -121,12 +121,18 @@
 <p>解除IP封禁：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo fail2ban-client <span class="built_in">set</span> sshd unbanip 10.xx.xx.xx</span><br></pre></td></tr></table></figure>
 
-<h2 id="显卡驱动与cuda"><a href="#显卡驱动与cuda" class="headerlink" title="显卡驱动与cuda"></a>显卡驱动与cuda</h2><p>显卡驱动为<code>550</code>版本，非必要不升级.</p>
+<h2 id="显卡驱动与cuda"><a href="#显卡驱动与cuda" class="headerlink" title="显卡驱动与cuda"></a>显卡驱动与cuda</h2><blockquote>
+<p>2024&#x2F;07&#x2F;22 更新显卡硬件，升级了驱动，本部分内容有所更新，另特别记录：<strong>A6000需要<code>8+8</code>的供电！！！目前服务器的供电线为2组<code>6+2+6</code></strong></p>
+</blockquote>
+<p><del>显卡驱动为<code>550</code>版本，非必要不升级。</del>显卡驱动版本<code>555</code>.</p>
 <p>cuda为<code>12.1</code>版本，截至<code>2024/03/21</code>，最新版本已经是<code>12.4</code>，但是考虑到<code>pytorch</code>官网支持的cuda最新版本为<code>12.1</code>，故保持不变，考虑当前主机<code>apt源</code>已经包含cuda，为防止apt升级命令影响cuda，所以将这些包设置为<code>hold</code>状态，可以通过下面命令查看：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-mark showhold</span><br></pre></td></tr></table></figure>
 
 <p>当然，可以手动升级.</p>
-<p>另外，cuda在安装时需要手动将路径加入环境变量，为了针对所有用户生效，在<code>/etc/profile.d/cuda_path.sh</code>中已经设置了变量，单个用户无需设置，具体可查看此文件.</p>
+<blockquote>
+<p>更新：针对cuda的<code>hold</code>设置已经解除，<code>hold</code>可能会影响到nvidia驱动的更新，但是仍旧不建议非必要升级cuda，<strong>尤其是超过<code>torch</code>官方所支持的最新cuda版本</strong>.</p>
+</blockquote>
+<p>另外，cuda在安装时需要手动将路径加入环境变量，为了针对所有用户生效，在<code>/etc/profile.d/cuda_path.sh</code>中已经设置了变量，单个用户无需设置，具体可查看此文件，这个设置是为了<strong>满足<code>torch</code>官方的要求</strong>，当然也可以使用切换软链接的方式.</p>
 <h1 id="关于重装系统"><a href="#关于重装系统" class="headerlink" title="关于重装系统"></a>关于重装系统</h1><h2 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h2><p>一般情况下，重装系统只会导致系统盘数据丢失，所以外挂磁盘数据<strong>理论</strong>是可以保留，如果是物理磁盘，只需<code>umount</code>即可。但是对于<code>lvm</code>格式卷，一定需要注意逻辑卷组之间的联系，<strong>尤其是要解除和系统盘之间的联系</strong>，重装系统之后，恢复<code>lvm</code>的数据，可以上网搜索，大致指令应该是使用<code>pvscan</code>扫描恢复.</p>
 <h2 id="BIOS"><a href="#BIOS" class="headerlink" title="BIOS"></a>BIOS</h2><p>开机按<code>DEL</code>键，进入BIOS，使用启动盘重装系统.</p>
 <h2 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h2><p>系统重装时，会要求配置网关，注意记录原服务器网络配置，现将193配置记录如下：</p>
