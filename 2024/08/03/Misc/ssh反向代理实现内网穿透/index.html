@@ -21,28 +21,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"yuanyangwangtj.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Linux环境conda">
+    <meta name="description" content="ssh反向代理 ssh反向代理实现内网穿透；ssh+nginx实现公网云服务器代理访问内网服务器 ssh反向代理实现内网穿透【亲测可用】">
 <meta property="og:type" content="article">
-<meta property="og:title" content="conda和pip换源">
-<meta property="og:url" content="https://yuanyangwangtj.github.io/2024/03/04/Misc/conda%E5%92%8Cpip%E6%8D%A2%E6%BA%90/index.html">
+<meta property="og:title" content="post">
+<meta property="og:url" content="https://yuanyangwangtj.github.io/2024/08/03/Misc/ssh%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/index.html">
 <meta property="og:site_name" content="DutchMan&#39;s Blog">
-<meta property="og:description" content="Linux环境conda">
+<meta property="og:description" content="ssh反向代理 ssh反向代理实现内网穿透；ssh+nginx实现公网云服务器代理访问内网服务器 ssh反向代理实现内网穿透【亲测可用】">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-03-04T02:55:57.000Z">
-<meta property="article:modified_time" content="2024-03-04T03:42:13.612Z">
+<meta property="article:published_time" content="2024-08-03T02:18:07.000Z">
+<meta property="article:modified_time" content="2024-08-03T02:19:56.772Z">
 <meta property="article:author" content="Flying DutchMan">
-<meta property="article:tag" content="python">
+<meta property="article:tag" content="ssh">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://yuanyangwangtj.github.io/2024/03/04/Misc/conda%E5%92%8Cpip%E6%8D%A2%E6%BA%90/">
+<link rel="canonical" href="https://yuanyangwangtj.github.io/2024/08/03/Misc/ssh%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yuanyangwangtj.github.io/2024/03/04/Misc/conda%E5%92%8Cpip%E6%8D%A2%E6%BA%90/","path":"2024/03/04/Misc/conda和pip换源/","title":"conda和pip换源"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yuanyangwangtj.github.io/2024/08/03/Misc/ssh%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/","path":"2024/08/03/Misc/ssh反向代理实现内网穿透/","title":"post"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>conda和pip换源 | DutchMan's Blog</title>
+<title>post | DutchMan's Blog</title>
   
 
 
@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">Linux环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#conda"><span class="nav-number">1.1.</span> <span class="nav-text">conda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip"><span class="nav-number">1.2.</span> <span class="nav-text">pip</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">配置文件方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">命令方式</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">ssh反向代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">内网服务器配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC"><span class="nav-number">2.1.</span> <span class="nav-text">创建启动脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAsystemd%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.2.</span> <span class="nav-text">创建systemd服务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AC%E7%BD%91%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">公网服务配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">公网服务器正向代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh%E9%85%8D%E7%BD%AE%E4%BF%AE%E6%94%B9"><span class="nav-number">3.2.</span> <span class="nav-text">ssh配置修改</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -201,7 +201,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yuanyangwangtj.github.io/2024/03/04/Misc/conda%E5%92%8Cpip%E6%8D%A2%E6%BA%90/">
+    <link itemprop="mainEntityOfPage" href="https://yuanyangwangtj.github.io/2024/08/03/Misc/ssh%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -214,12 +214,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="conda和pip换源 | DutchMan's Blog">
+      <meta itemprop="name" content="post | DutchMan's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          conda和pip换源
+          post
         </h1>
 
         <div class="post-meta-container">
@@ -231,7 +231,20 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-03-04 10:55:57 / 修改时间：11:42:13" itemprop="dateCreated datePublished" datetime="2024-03-04T10:55:57+08:00">2024-03-04</time>
+      <time title="创建时间：2024-08-03 10:18:07 / 修改时间：10:19:56" itemprop="dateCreated datePublished" datetime="2024-08-03T10:18:07+08:00">2024-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SSH/" itemprop="url" rel="index"><span itemprop="name">SSH</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SSH/Misc/" itemprop="url" rel="index"><span itemprop="name">Misc</span></a>
+        </span>
     </span>
 
   
@@ -243,25 +256,50 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="Linux环境"><a href="#Linux环境" class="headerlink" title="Linux环境"></a>Linux环境</h1><h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><p>配置文件<code>~/.condarc</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: <span class="literal">true</span></span><br><span class="line">default_channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">custom_channels:</span><br><span class="line">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <div class="post-body" itemprop="articleBody"><h1 id="ssh反向代理"><a href="#ssh反向代理" class="headerlink" title="ssh反向代理"></a>ssh反向代理</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/winter2121/article/details/116048685">ssh反向代理实现内网穿透；ssh+nginx实现公网云服务器代理访问内网服务器</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liuxingyuzaixian/article/details/128705262">ssh反向代理实现内网穿透【亲测可用】</a></p>
+</blockquote>
+<p>为实现在公网环境访问内网服务器，现通过<strong>ssh反向代理</strong>的方式，并配置开机自启动服务，步骤如下：</p>
+<h1 id="内网服务器配置"><a href="#内网服务器配置" class="headerlink" title="内网服务器配置"></a>内网服务器配置</h1><h2 id="创建启动脚本"><a href="#创建启动脚本" class="headerlink" title="创建启动脚本"></a>创建启动脚本</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo vim /usr/local/bin/reverse-ssh-tunnel.sh</span><br></pre></td></tr></table></figure>
 
-<p>查看已安装源：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda config --show-sources</span><br></pre></td></tr></table></figure>
+<p>内容如下，其中<code>public_user</code>表示公网服务器用户，<code>public_ip</code>表示公网服务器IP：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ssh -CNR 7777:localhost:22 -o ServerAliveInterval=60 public_user@public_ip</span><br></pre></td></tr></table></figure>
 
-<p>清除索引缓存：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda clean -i</span><br></pre></td></tr></table></figure>
+<p>如果手动启动，可以使用<code>ps aux | grep ssh</code>查看是否启动。</p>
+<p>设置为可运行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">chmod</span> +x /usr/local/bin/reverse-ssh-tunnel.sh</span><br></pre></td></tr></table></figure>
 
-<h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><h3 id="配置文件方式"><a href="#配置文件方式" class="headerlink" title="配置文件方式"></a>配置文件方式</h3><p>修改配置文件<code>~/.pip/pip.conf</code>:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://mirrors.bfsu.edu.cn/pypi/web/simple</span><br><span class="line">format = columns</span><br><span class="line">trusted-host = mirrors.bfsu.edu.cn</span><br></pre></td></tr></table></figure>
+<h2 id="创建systemd服务"><a href="#创建systemd服务" class="headerlink" title="创建systemd服务"></a>创建<code>systemd</code>服务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/systemd/system/reverse-ssh-tunnel.service</span><br></pre></td></tr></table></figure>
 
-<h3 id="命令方式"><a href="#命令方式" class="headerlink" title="命令方式"></a>命令方式</h3><p>临时使用：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package</span><br></pre></td></tr></table></figure>
+<p>内容如下，注意<strong>用户名</strong>等信息替换：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Reverse SSH Tunnel</span><br><span class="line">After=network.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/usr/local/bin/reverse-ssh-tunnel.sh</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=10</span><br><span class="line">User=你的用户名</span><br><span class="line">RemainAfterExit=yes</span><br><span class="line">StartLimitIntervalSec=500</span><br><span class="line">StartLimitBurst=5</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
 
-<p>永久更新（需pip&gt;&#x3D;10.0.0）：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip config <span class="built_in">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+<p>配置启动服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> reverse-ssh-tunnel.service</span><br><span class="line">sudo systemctl start reverse-ssh-tunnel.service</span><br><span class="line"></span><br><span class="line">sudo systemctl status reverse-ssh-tunnel.service</span><br></pre></td></tr></table></figure>
 
-<p>这个方式会将配置写入文件<code>~/.config/pip/pip.conf</code>，尚未测试两种配置同时使用的效果。</p>
+<h1 id="公网服务配置"><a href="#公网服务配置" class="headerlink" title="公网服务配置"></a>公网服务配置</h1><p>对于公网服务器本身，可以不添加任何配置，登录公网服务器后，可以通过如下方式访问：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh secret_user@localhost -p 7777</span><br></pre></td></tr></table></figure>
+
+<p>当然也可以通过<strong>跳板机</strong>的方式登录访问，如果想要一次性直接访问，提供以下两种方式;</p>
+<h2 id="公网服务器正向代理"><a href="#公网服务器正向代理" class="headerlink" title="公网服务器正向代理"></a>公网服务器正向代理</h2><p>添加公网服务器正向代理，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -fCNL *:7778:localhost:7777 -o ServerAliveInterval=60 public_user@localhost -p 22</span><br></pre></td></tr></table></figure>
+
+<p>上面配置的意思是让本机<code>7778</code>端口指向一个远端机器的<code>7777</code>端口，而这里的远端机器恰好就是公网服务器本身。当然，可以添加开机自启动服务，与上面类似。</p>
+<p>访问如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh secret_user@public-ip -p 7778</span><br></pre></td></tr></table></figure>
+
+<h2 id="ssh配置修改"><a href="#ssh配置修改" class="headerlink" title="ssh配置修改"></a>ssh配置修改</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.ssh.com/academy/ssh/tunneling-example#remote-forwarding">https://www.ssh.com/academy/ssh/tunneling-example#remote-forwarding</a></p>
+<p>By default, OpenSSH only allows connecting to remote forwarded ports from the server host. </p>
+</blockquote>
+<p>上面是无法直接跨公网连接内网服务器的原因，可以修改ssh配置文件<code>/etc/ssh/sshd_config</code>中选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GatewayPorts yes</span><br></pre></td></tr></table></figure>
+
+<p>重启服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以直接ssh登录访问了！</p>
 
     </div>
 
@@ -271,21 +309,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/ssh/" rel="tag"># ssh</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/01/11/Misc/ssh%E5%AF%86%E9%92%A5%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98/" rel="prev" title="ssh密钥连接问题">
-                  <i class="fa fa-angle-left"></i> ssh密钥连接问题
+                <a href="/2024/07/23/Docker/Docker%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/" rel="prev" title="Docker与深度学习环境">
+                  <i class="fa fa-angle-left"></i> Docker与深度学习环境
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/03/21/Misc/lab-193%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E/" rel="next" title="lab-xxx服务器配置说明">
-                  lab-xxx服务器配置说明 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>

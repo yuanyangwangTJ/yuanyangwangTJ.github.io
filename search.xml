@@ -323,4 +323,60 @@
         <tag>deep learning</tag>
       </tags>
   </entry>
+  <entry>
+    <title>post</title>
+    <url>/2024/08/03/Misc/ssh%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</url>
+    <content><![CDATA[<h1 id="ssh反向代理"><a href="#ssh反向代理" class="headerlink" title="ssh反向代理"></a>ssh反向代理</h1><blockquote>
+<p><a href="https://blog.csdn.net/winter2121/article/details/116048685">ssh反向代理实现内网穿透；ssh+nginx实现公网云服务器代理访问内网服务器</a></p>
+<p><a href="https://blog.csdn.net/liuxingyuzaixian/article/details/128705262">ssh反向代理实现内网穿透【亲测可用】</a></p>
+</blockquote>
+<p>为实现在公网环境访问内网服务器，现通过<strong>ssh反向代理</strong>的方式，并配置开机自启动服务，步骤如下：</p>
+<h1 id="内网服务器配置"><a href="#内网服务器配置" class="headerlink" title="内网服务器配置"></a>内网服务器配置</h1><h2 id="创建启动脚本"><a href="#创建启动脚本" class="headerlink" title="创建启动脚本"></a>创建启动脚本</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo vim /usr/local/bin/reverse-ssh-tunnel.sh</span><br></pre></td></tr></table></figure>
+
+<p>内容如下，其中<code>public_user</code>表示公网服务器用户，<code>public_ip</code>表示公网服务器IP：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ssh -CNR 7777:localhost:22 -o ServerAliveInterval=60 public_user@public_ip</span><br></pre></td></tr></table></figure>
+
+<p>如果手动启动，可以使用<code>ps aux | grep ssh</code>查看是否启动。</p>
+<p>设置为可运行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">chmod</span> +x /usr/local/bin/reverse-ssh-tunnel.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建systemd服务"><a href="#创建systemd服务" class="headerlink" title="创建systemd服务"></a>创建<code>systemd</code>服务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/systemd/system/reverse-ssh-tunnel.service</span><br></pre></td></tr></table></figure>
+
+<p>内容如下，注意<strong>用户名</strong>等信息替换：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Reverse SSH Tunnel</span><br><span class="line">After=network.target</span><br><span class="line">Wants=network-online.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/usr/local/bin/reverse-ssh-tunnel.sh</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=10</span><br><span class="line">User=你的用户名</span><br><span class="line">RemainAfterExit=yes</span><br><span class="line">StartLimitIntervalSec=500</span><br><span class="line">StartLimitBurst=5</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>配置启动服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> reverse-ssh-tunnel.service</span><br><span class="line">sudo systemctl start reverse-ssh-tunnel.service</span><br><span class="line"></span><br><span class="line">sudo systemctl status reverse-ssh-tunnel.service</span><br></pre></td></tr></table></figure>
+
+<h1 id="公网服务配置"><a href="#公网服务配置" class="headerlink" title="公网服务配置"></a>公网服务配置</h1><p>对于公网服务器本身，可以不添加任何配置，登录公网服务器后，可以通过如下方式访问：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh secret_user@localhost -p 7777</span><br></pre></td></tr></table></figure>
+
+<p>当然也可以通过<strong>跳板机</strong>的方式登录访问，如果想要一次性直接访问，提供以下两种方式;</p>
+<h2 id="公网服务器正向代理"><a href="#公网服务器正向代理" class="headerlink" title="公网服务器正向代理"></a>公网服务器正向代理</h2><p>添加公网服务器正向代理，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -fCNL *:7778:localhost:7777 -o ServerAliveInterval=60 public_user@localhost -p 22</span><br></pre></td></tr></table></figure>
+
+<p>上面配置的意思是让本机<code>7778</code>端口指向一个远端机器的<code>7777</code>端口，而这里的远端机器恰好就是公网服务器本身。当然，可以添加开机自启动服务，与上面类似。</p>
+<p>访问如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh secret_user@public-ip -p 7778</span><br></pre></td></tr></table></figure>
+
+<h2 id="ssh配置修改"><a href="#ssh配置修改" class="headerlink" title="ssh配置修改"></a>ssh配置修改</h2><blockquote>
+<p><a href="https://www.ssh.com/academy/ssh/tunneling-example#remote-forwarding">https://www.ssh.com/academy/ssh/tunneling-example#remote-forwarding</a></p>
+<p>By default, OpenSSH only allows connecting to remote forwarded ports from the server host. </p>
+</blockquote>
+<p>上面是无法直接跨公网连接内网服务器的原因，可以修改ssh配置文件<code>/etc/ssh/sshd_config</code>中选项：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GatewayPorts yes</span><br></pre></td></tr></table></figure>
+
+<p>重启服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以直接ssh登录访问了！</p>
+]]></content>
+      <categories>
+        <category>SSH</category>
+        <category>Misc</category>
+      </categories>
+      <tags>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
 </search>
