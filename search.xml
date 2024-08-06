@@ -369,7 +369,27 @@
 <p>重启服务：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
 
-<p>这样就可以直接ssh登录访问了！</p>
+<p>不仅如此，<strong>内网服务器脚本的内容需要允许任何IP地址机器访问</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ssh -CNR *:7777:localhost:22 -o ServerAliveInterval=60 public_user@public_ip</span><br></pre></td></tr></table></figure>
+
+<p>按照之前方式重启服务，这样就可以直接ssh登录访问了！</p>
+<h1 id="网络与服务重启"><a href="#网络与服务重启" class="headerlink" title="网络与服务重启"></a>网络与服务重启</h1><blockquote>
+<p><a href="https://unix.stackexchange.com/questions/725834/systemd-unit-auto-restart-when-network-changes">Systemd unit auto restart when network changes</a></p>
+</blockquote>
+<p>在网络不稳定的情况下，需要重启服务，下面考虑使用<code>NetworkManager-dispatcher</code>服务来自动在网络波动情况下重启反向代理服务：</p>
+<ol>
+<li>开启<code>NetworkManager-dispatcher.service</code></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> --now NetworkManager-dispatcher.service</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>查看网卡信息</li>
+<li>在<code>/etc/NetworkManager/dispatcher.d/</code>目录创建脚本，推荐以<strong>数字开头</strong>命名，表示级别，比如<code>10-reverse-ssh-tunnel-dispatcher.sh</code>，编辑内容如下：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Scripts under &#x27;/etc/NetworkManager/dispatcher.d/&#x27; will have </span></span><br><span class="line"><span class="comment"># two arguments ($1 and $2) which belong to the device or network interface</span></span><br><span class="line"><span class="comment"># and its status.</span></span><br><span class="line"></span><br><span class="line">DEVICE=<span class="variable">$&#123;1&#125;</span></span><br><span class="line">STATE=<span class="variable">$&#123;2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$DEVICE</span>&quot;</span> = <span class="string">&quot;wlo1&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">   <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$STATE</span>&quot;</span> = <span class="string">&quot;up&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">      systemctl restart reverse-ssh-tunnel.service</span><br><span class="line">   <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<p>这将会在网卡状态为<code>up</code>的情况下重启服务。当然，配置完成后重启<code>dispatcher</code>服务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart NetworkManager-dispatcher.service</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>SSH</category>
