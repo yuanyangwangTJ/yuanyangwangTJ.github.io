@@ -1,0 +1,69 @@
+# Keep NexT customisations here so npm upgrades never overwrite them.
+scheme: Muse
+
+menu:
+  home: / || fa fa-home
+  archives: /archives/ || fa fa-archive
+  categories: /categories/ || fa fa-th
+  tags: /tags/ || fa fa-tags
+  about: /about/ || fa fa-user
+
+menu_settings:
+  icons: true
+  badges: false
+
+avatar:
+  url: ''
+  rounded: true
+  rotated: false
+
+social: {}
+
+sidebar:
+  position: left
+  display: post
+  padding: 18
+  offset: 12
+
+footer:
+  since: 2021
+  icon:
+    name: fa fa-heart
+    animated: false
+    color: '#808080'
+  copyright: true
+  powered: false
+  theme: false
+
+toc:
+  enable: true
+  number: false
+  wrap: true
+  expand_all: false
+  max_depth: 3
+
+back2top:
+  enable: true
+  sidebar: false
+  scrollpercent: false
+
+motion:
+  enable: false
+
+darkmode: false
+copy_button:
+  enable: true
+  show_result: true
+  style: flat
+
+local_search:
+  enable: true
+  trigger: auto
+  top_n_per_article: 1
+
+comments:
+  style: tabs
+  active: ''
+
+github_banner:
+  enable: false

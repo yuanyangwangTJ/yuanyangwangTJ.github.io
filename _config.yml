@@ -1,0 +1,88 @@
+# Site
+title: Yuanyang Wang
+subtitle: ''
+description: ''
+keywords: ''
+author: Yuanyang Wang
+language: zh-CN
+timezone: Asia/Shanghai
+
+# URL
+url: https://yuanyangwangTJ.github.io
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults: {}
+pretty_urls:
+  trailing_index: true
+  trailing_html: true
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render: []
+
+# Writing
+new_post_name: :title.md
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+
+# Home page
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+
+# Taxonomy & archive
+default_category: uncategorized
+category_map: {}
+tag_map: {}
+archive_generator:
+  enabled: true
+  per_page: 0
+  yearly: true
+  monthly: true
+  daily: false
+
+# Markdown & syntax highlighting
+highlight:
+  enable: true
+  line_number: false
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  enable: false
+
+# Theme
+theme: next
+
+# Plugins
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub: ''
+  content: true
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
