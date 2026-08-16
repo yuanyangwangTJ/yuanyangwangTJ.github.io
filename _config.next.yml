@@ -1,26 +1,31 @@
-scheme: Muse
+scheme: Gemini
 
 menu:
   home: / || fa fa-home
-  archives: /archives/ || fa fa-archive
-  categories: /categories/ || fa fa-th
-  tags: /tags/ || fa fa-tags
   about: /about/ || fa fa-user
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-th
+  archives: /archives/ || fa fa-archive
 
 menu_settings:
   icons: true
   badges: false
 
 avatar:
-  url: ''
-  rounded: false
-  rotated: false
+  url: /img/avatar.png
+  rounded: true
+  rotated: true
 
-social: {}
+social:
+  GitHub: https://github.com/yuanyangwangTJ || fab fa-github
 
 sidebar:
   position: left
+  width_expanded: 320
+  width_dual_column: 240
   display: post
+  padding: 18
+  offset: 12
 
 toc:
   enable: true
@@ -30,19 +35,53 @@ toc:
   max_depth: 3
 
 motion:
-  enable: false
-
-darkmode: false
-
-copy_button:
   enable: true
-  show_result: true
-  style: flat
+  async: false
+  transition:
+    menu_item: fadeInDown
+    post_block: fadeIn
+    post_header: fadeInDown
+    post_body: fadeInDown
+    coll_header: fadeInLeft
+    sidebar: fadeInUp
+
+darkmode: true
+
+favicon:
+  small: /img/blog.png
+  medium: /img/blog.png
+
+local_search:
+  enable: true
+  top_n_per_article: 1
+  unescape: false
+  preload: false
+
+codeblock:
+  copy_button:
+    enable: true
+    style: flat
+
+back2top:
+  enable: true
+  sidebar: false
+  scrollpercent: true
+
+math:
+  every_page: true
+  mathjax:
+    enable: true
+    tags: none
+    display_overflow: scroll
 
 comments:
   active: ''
 
 footer:
-  since: 2021
-  powered: false
-  theme: false
+  since: 2024
+  icon:
+    name: fa fa-heart
+    animated: false
+    color: "#ff0000"
+  copyright: Flying DutchMan
+  powered: true
