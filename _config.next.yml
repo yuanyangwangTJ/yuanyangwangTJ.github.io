@@ -1,5 +1,8 @@
 scheme: Gemini
 
+custom_file_path:
+  variable: source/_data/variables.styl
+
 menu:
   home: / || fa fa-home
   about: /about/ || fa fa-user
@@ -46,6 +49,10 @@ motion:
     sidebar: fadeInUp
 
 darkmode: true
+
+text_align:
+  desktop: justify
+  mobile: start
 
 favicon:
   small: /img/blog.png
