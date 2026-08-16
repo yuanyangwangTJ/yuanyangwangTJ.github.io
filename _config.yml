@@ -50,6 +50,14 @@ index_generator:
   per_page: 10
   order_by: -date
 
+# Automatically use the first two top-level HTML elements as the post excerpt.
+# This restores the original behavior without requiring `<!-- more -->`.
+excerpt:
+  depth: 2
+  excerpt_excludes: []
+  more_excludes: []
+  hideWholePostExcerpts: true
+
 default_category: uncategorized
 category_map:
 tag_map:

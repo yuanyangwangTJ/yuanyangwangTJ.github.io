@@ -13,8 +13,6 @@ cover: https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/LaTeX_logo.svg/
 
 因为LaTeX在完成论文等工作时排版比较容易，但是入门难度比较高，在入门LaTeX约一年后，我准备整理一下所获取的LaTeX信息，构建属于自己的模板。
 
-<!-- more -->
-
 模板采用分文件的方式，使作者更专注于自己的书写内容，为更好的支持中文，使用`xelatex`编译，目前已经测试通过，除却LaTeX的基础功能之外，本模板包括的功能如下：
 
 - 添加`pdf`作为封面
