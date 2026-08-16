@@ -12,9 +12,9 @@ menu_settings:
   badges: false
 
 avatar:
-  url: /img/avatar.png
-  rounded: true
-  rotated: true
+  url: ''
+  rounded: false
+  rotated: false
 
 social:
   GitHub: https://github.com/yuanyangwangTJ || fab fa-github
@@ -78,10 +78,10 @@ comments:
   active: ''
 
 footer:
-  since: 2024
+  since: 2026
   icon:
     name: fa fa-heart
     animated: false
     color: "#ff0000"
-  copyright: Flying DutchMan
+  copyright: "Flying DutchMan & Codex"
   powered: true

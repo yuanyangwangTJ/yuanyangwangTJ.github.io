@@ -11,6 +11,8 @@ tags:
 # 密钥连接问题
 在使用ssh连接时，注意到可以使用密码连接，但是密钥连接失效，如果下面命令连接：
 
+<!-- more -->
+
 ```bash
 ssh -o PasswordAuthentication=no user@hostname
 ```

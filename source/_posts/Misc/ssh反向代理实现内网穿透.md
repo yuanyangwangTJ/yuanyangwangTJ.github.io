@@ -14,6 +14,8 @@ categories:
 >
 > [ssh反向代理实现内网穿透【亲测可用】](https://blog.csdn.net/liuxingyuzaixian/article/details/128705262)
 
+<!-- more -->
+
 为实现在公网环境访问内网服务器，现通过**ssh反向代理**的方式，并配置开机自启动服务，步骤如下：
 
 # 内网服务器配置

@@ -6,6 +6,9 @@ tags: python
 
 # Linux环境
 ## conda
+
+<!-- more -->
+
 配置文件`~/.condarc`:
 
 ```bash

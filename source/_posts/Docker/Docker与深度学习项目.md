@@ -12,6 +12,8 @@ tags:
 
 ## 简介
 
+<!-- more -->
+
 Docker 镜像是一个描述容器如何运行的的文件，Docker 容器是 Docker 镜像在运行或被终止时的一个阶段。容器和主机上的其他文件是隔离的。当我们运行一个 Docker 容器的时候，它会使用一个被隔离出来的文件系统，这个文件系统是由一个 Docker 镜像提供的。Docker 镜像包含了运行应用程序所需要的一切东西——所有的依赖、配置、脚本、二进制文件等等。
 
 ## 安装
@@ -112,7 +114,7 @@ sudo tee /etc/systemd/system/docker.service.d/proxy.conf <<-'EOF'
 [Service]
 Environment="HTTP_PROXY=http://127.0.0.1:7891"
 Environment="HTTPS_PROXY=http://127.0.0.1:7891"
-Environment="NO_PROXY=localhost,127.0.0.1,.example.com,10.60.150.0/24"
+Environment="NO_PROXY=localhost,127.0.0.1,.example.com,10.0.0.0/8"
 EOF
 sudo systemctl daemon-reload
 sudo systemctl restart docker
@@ -206,7 +208,7 @@ docker start -i dp-env
 ```bash
 docker run -d \
     -p 5000:5000 \
-    -v /home/shared/var/lib/registry:/var/lib/registry \
+    -v /srv/docker-data/registry:/var/lib/registry \
     --restart=always --name registry registry
 ```
 
@@ -236,13 +238,13 @@ docker commit -m "fisrt commit" dp-env torch-pc:0.1
 `docker tag IMAGE[:TAG] [REGISTRY_HOST[:REGISTRY_PORT]/]REPOSITORY[:TAG]`
 
 ```bash
-docker tag torch-pc:0.1 10.60.150.193:5000/torch-pc:latest
+docker tag torch-pc:0.1 registry.example.internal:5000/torch-pc:latest
 ```
 
 使用 `docker push` 上传标记的镜像：
 
 ```bash
-docker push 10.60.150.193:5000/torch-pc:latest
+docker push registry.example.internal:5000/torch-pc:latest
 ```
 
 这里因为是内网地址作为私有仓库地址，Docker 默认不允许非 `HTTPS` 方式推送镜像。我们可以通过 Docker 的配置选项来取消这个限制，在`/etc/docker/daemon.json`中配置如下：
@@ -250,7 +252,7 @@ docker push 10.60.150.193:5000/torch-pc:latest
 ```
 {
   "insecure-registries": [
-    "10.60.150.193:5000"
+    "registry.example.internal:5000"
   ]
 }
 ```
@@ -258,7 +260,7 @@ docker push 10.60.150.193:5000/torch-pc:latest
 用`curl` 查看仓库中的镜像:
 
 ```bash
-curl 10.60.150.193:5000/v2/_catalog
+curl registry.example.internal:5000/v2/_catalog
 ```
 
 ```
@@ -268,8 +270,8 @@ curl 10.60.150.193:5000/v2/_catalog
 先删除已有镜像，再尝试从私有仓库中下载这个镜像：
 
 ```bash
-$ docker image rm 10.60.150.193:5000/torch-pc:latest
-$ docker pull 10.60.150.193:5000/torch-pc:latest
+$ docker image rm registry.example.internal:5000/torch-pc:latest
+$ docker pull registry.example.internal:5000/torch-pc:latest
 $ docker image ls
 ```
 
@@ -297,8 +299,8 @@ sudo systemctl stop docker
 移动目录并连接：
 
 ```bash
-sudo mv /var/lib/docker /home/shared/var/lib/docker
-sudo ln -s /home/shared/var/lib/docker /var/lib/docker
+sudo mv /var/lib/docker /srv/docker-data/docker
+sudo ln -s /srv/docker-data/docker /var/lib/docker
 ```
 
 ## 关于Docker用处

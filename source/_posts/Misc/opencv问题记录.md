@@ -11,6 +11,8 @@ opencv在安装使用的过程中，有很多的问题出现，现记录如下�
 
 # Linux python版本
 
+<!-- more -->
+
 下面讨论的安装环境为服务器版的Linux，并不带图形界面，将会尝试安装**python**版本的**opencv**，环境使用**conda**创建.
 
 ## 安装
@@ -74,7 +76,7 @@ pip install opencv-contrib-python
 
 ```
 qt.qpa.xcb: could not connect to display 
-qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "/home/user/miniconda3/envs/CV/lib/python3.9/site-packages/cv2/qt/plugins" even though it was found.
+qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "/opt/miniconda3/envs/CV/lib/python3.9/site-packages/cv2/qt/plugins" even though it was found.
 This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
 
 Available platform plugins are: xcb, eglfs, minimal, minimalegl, offscreen, vnc, webgl.
@@ -110,4 +112,3 @@ plt.show()
 ```
 
 这样，便可以正常查看图片了，**有一种兜兜转转回原地的感觉**？！
-

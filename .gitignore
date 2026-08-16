@@ -1,5 +1,13 @@
 .DS_Store
 Thumbs.db
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+.idea/
+.vscode/
 db.json
 *.log
 node_modules/
